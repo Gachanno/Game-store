@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    align-items: center;
+    column-gap: 100px;
+
+    &__nav{
+        display: flex;  
+        column-gap: 50px;
+    }
+}
