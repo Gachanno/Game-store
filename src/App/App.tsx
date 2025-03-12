@@ -1,15 +1,25 @@
-import Store from '../Pages/Store'
-import Header from '../Widgets/Header/Header'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { routeTree } from './routeTree.gen'
 import './styles/App.scss'
+import './styles/index.css'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-function App() {
+const router = createRouter({ routeTree })
 
-  return (
-    <>
-    <Header/>
-    <Store/>
-    </>
-  )
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: typeof router
+  }
 }
 
-export default App
+const queryClient = new QueryClient()
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} notFoundMode='root'/>
+    </QueryClientProvider>
+  </StrictMode>,
+)

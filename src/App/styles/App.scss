@@ -1,6 +1,17 @@
 @use 'reset' as *;
 @use 'normalize' as *;
 @use 'fonts'  as *;
-@use 'media';
-@use 'utils';
+@use '../../Shared/style/media' as m;
+@use '../../Shared/style/utils';
 @use 'global' as *;
+
+#root{
+    padding-top: 1.25rem;
+    padding-inline: 6.25rem;
+    max-width: 90rem;
+    margin: 0 auto;
+
+    @include m.tablet{
+        padding-inline: 2.25rem;
+    }
+}

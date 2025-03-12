@@ -1,0 +1,180 @@
+@use '@/Shared/style/media' as m;
+
+@keyframes loadNextSlide{
+    from{
+        width: 0;
+    }
+    to{
+        width: 101%;
+    }
+}
+
+.swiper-pagination{
+    padding-top: 1rem;
+    position: static;
+
+    &-bullet{
+        position: relative;
+        height: 1rem;
+        width: 1rem;
+        border: 0.125rem solid #5B5E6A;
+        background-color: transparent;
+        overflow: hidden;
+
+        &-active{
+            border-radius: 0.5625rem;
+            width: 5.75rem;
+        }
+    }
+}
+
+.highlight__bullet-animation{
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    border-radius: 0.5625rem;
+}
+
+.swiper-pagination-bullet-active{
+    .highlight__bullet-animation{
+        animation: loadNextSlide 12s;
+        background-color: #a1a3a1;
+    }
+}
+
+
+.swiper__layout{
+    max-width: 90rem;
+}
+
+.swiper-slide--custom{
+    position: relative;
+}
+
+.highlight{
+    &__img{
+        display: block;
+        height: 38.75rem;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 1.25rem;
+        filter: brightness(90%);
+    }
+
+    &__wrapper{
+        position: absolute;
+        bottom: 3.4375rem;
+        left: 3.4375rem;
+        display: flex;
+        align-items: c;
+        column-gap: 0.625rem;
+    }
+    &__buy{
+        padding: 1.375rem 2.5rem;
+        display: flex;
+        align-items: center;
+        border-radius: 0.3125rem;
+        background-color: white;
+        color: #000;
+        text-transform: uppercase;
+        transition: box-shadow 0.5s;
+        
+        &:hover{
+            -webkit-box-shadow: 0px 0px 0.625rem 0.125rem rgba(34, 60, 80, 0.4) inset;
+            -moz-box-shadow: 0px 0px 0.625rem 0.125rem rgba(34, 60, 80, 0.4) inset;
+            box-shadow: 0px 0px 0.625rem 0.125rem rgba(34, 60, 80, 0.4) inset;
+        }
+
+        @include m.tablet{
+            padding: 0.9rem 1.5em;
+        }
+    }
+
+    &__whitelist{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        column-gap: 0.625rem;
+        background-color: transparent;
+        padding: 0.9375rem 1.875rem;
+        border: 0.1875rem solid white;
+        border-radius: 0.3125rem;
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        transition: color 1s, background-color 1s;
+
+        @include m.tablet{
+            padding: 0.9rem 0.9em;
+
+            span{
+                padding-top: 0.9em;
+            }
+        }
+
+        span{
+            padding-top: 0.25rem;
+        }
+
+        &:hover,
+        &--active{
+            background-color: white;
+            color: #000;
+
+            .highlight__circle-wrapper{
+                border-color: #000;
+            }
+
+            .highlight__circle-line{
+                background-color: #000;
+            }
+        }
+
+        
+        &--active{
+            .highlight__circle-line:last-child{
+                width: 0;
+            }
+
+            &:hover{
+                background-color: transparent;
+                color: white;
+
+                .highlight__circle-wrapper{
+                    border-color: white;
+                }
+
+                .highlight__circle-line{
+                    background-color: white;
+                }
+            }
+        }
+    }
+
+    &__circle{
+        &-wrapper{
+            position: relative;
+            height: 1.5rem;
+            width: 1.5rem;
+            border: 0.1875rem solid white;
+            border-radius: 50%;
+            transition: border-color 1s;
+        }
+
+        &-line{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 0.1875rem;
+            background-color: white;
+            transition: width 1s, background-color 1s;
+            overflow: hidden;
+
+            &:last-child{
+                transform: translate(-50%, -50%) rotate( 90deg );
+            }
+        }
+    }
+}

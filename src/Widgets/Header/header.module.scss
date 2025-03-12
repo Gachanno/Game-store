@@ -1,10 +1,11 @@
+@use '../../Shared/style/media' as m;
+
 .header{
     display: flex;
     align-items: center;
-    column-gap: 100px;
+    column-gap: 6.25rem;
 
-    &__nav{
-        display: flex;  
-        column-gap: 50px;
+    @include m.tablet{
+        column-gap: 1.5rem;
     }
 }

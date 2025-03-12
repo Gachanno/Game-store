@@ -1,0 +1,16 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    row-gap: 3.125rem;
+    margin-top: 5.625rem;
+
+    &__element-wrapper{
+        display: flex;
+        flex-direction: column;
+        row-gap: 3.125rem;
+
+        h1{
+            margin: 0;
+        }
+    }
+}

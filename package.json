@@ -4,20 +4,28 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite ",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.67.2",
+    "@tanstack/react-router": "^1.112.17",
+    "axios": "^1.8.2",
+    "json-server": "^1.0.0-beta.3",
+    "path": "^0.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router": "^7.2.0",
     "sass": "^1.85.1",
-    "sass-migrator": "^2.3.1"
+    "sass-migrator": "^2.3.1",
+    "swiper": "^11.2.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@tanstack/router-devtools": "^1.112.17",
+    "@tanstack/router-plugin": "^1.112.17",
+    "@types/node": "^22.13.10",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react-swc": "^3.8.0",
