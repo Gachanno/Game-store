@@ -12,14 +12,14 @@
       "idGame": 14808,
       "nameGame": "Hogwarts Legacy",
       "urlImage": "@/dataBaseImg/highlights/Hogwarts_Legacy.jpg",
-      "whitelist": false
+      "whitelist": true
     },
     {
       "id": "14807",
       "idGame": 14807,
       "nameGame": "Assassin’s Creed Shadows",
       "urlImage": "@/dataBaseImg/highlights/Assassin’s_Creed_Shadows.jpg",
-      "whitelist": true
+      "whitelist": false
     },
     {
       "id": "14806",

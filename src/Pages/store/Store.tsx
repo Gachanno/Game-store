@@ -2,7 +2,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import c from './style.module.scss'
 import './style.scss'
-import SliderHighlights from '@/Entities/sliders/sliderHighlights';
+import SliderHighlights from '@/src/Entities/sliders/sliderHighlights';
 
 
 

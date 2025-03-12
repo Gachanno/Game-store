@@ -5,9 +5,9 @@ import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './style.scss'
-import { highlightsService } from '@/Shared/api/highlights.service';
+import { highlightsService } from '@/src/Shared/api/highlights.service';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { IHighlights } from '@/Shared/types/types';
+import { IHighlights } from '@/src/Shared/types/types';
 
 
 const SliderHighlights = () => {
@@ -68,7 +68,7 @@ return (
             >
             {dataHighlights?.map((element:IHighlights) =>(
                 <SwiperSlide key={element.idGame} className='swiper-slide--custom'>
-                <img src={element.urlImage.replace('@', '/src')} alt={element.nameGame} className='highlight__img'/>
+                <img src={element.urlImage.replace('@', 'public')} alt={element.nameGame} className='highlight__img'/>
                 <div className='highlight__wrapper'>
                     <Link to='/' className='highlight__buy'>
                         Купить
