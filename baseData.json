@@ -5,7 +5,7 @@
       "idGame": 14809,
       "nameGame": "Wild Hearts",
       "urlImage": "@/dataBaseImg/highlights/Wild_Hearts.jpg",
-      "whitelist": true
+      "whitelist": false
     },
     {
       "id": "14808",
@@ -27,6 +27,68 @@
       "nameGame": "Kingdom Come: Deliverance II",
       "urlImage": "@/dataBaseImg/highlights/Kingdom_Come_Deliverance_II.jpg",
       "whitelist": false
+    }
+  ],
+  "gameOnSale": [
+    {
+      "id": "14810",
+      "idGame": 14809,
+      "nameGame": "Wild Hearts",
+      "urlImage": "@/dataBaseImg/sale/Wild_Heart.jpg",
+      "edition": "Standard Edition",
+      "price": "3890",
+      "priceWithoutSale": "3500",
+      "saleVale": "10"
+    },
+    {
+      "id": "14811",
+      "idGame": 14808,
+      "nameGame": "Hogwarts Legacy",
+      "urlImage": "@/dataBaseImg/highlights/Hogwarts_Legacy.jpg",
+      "edition": "Gold Edition",
+      "price": "3500",
+      "priceWithoutSale": "5180",
+      "saleVale": "30"
+    },
+    {
+      "id": "14812",
+      "idGame": 14807,
+      "nameGame": "Assassin’s Creed Shadows",
+      "urlImage": "@/dataBaseImg/highlights/Assassin’s_Creed_Shadows.jpg",
+      "edition": "Digital Deluxe Edition",
+      "price": "4220",
+      "priceWithoutSale": "8440",
+      "saleVale": "50"
+    },
+    {
+      "id": "14813",
+      "idGame": 14806,
+      "nameGame": "Kingdom Come: Deliverance II",
+      "urlImage": "@/dataBaseImg/highlights/Kingdom_Come_Deliverance_II.jpg",
+      "edition": "Gold Edition",
+      "price": "6000",
+      "priceWithoutSale": "7500",
+      "saleVale": "20"
+    },
+    {
+      "id": "14814",
+      "idGame": 14814,
+      "nameGame": "Mount & Blade II: Bannerlord",
+      "urlImage": "@/dataBaseImg/highlights/Kingdom_Come_Deliverance_II.jpg",
+      "edition": "Standard Edition",
+      "price": "1404",
+      "priceWithoutSale": "4680",
+      "saleVale": "70"
+    },
+    {
+      "id": "14815",
+      "idGame": 14815,
+      "nameGame": "Kingdom Come: Deliverance II",
+      "urlImage": "@/dataBaseImg/highlights/Kingdom_Come_Deliverance_II.jpg",
+      "edition": "",
+      "price": "1",
+      "priceWithoutSale": "1",
+      "saleVale": "10"
     }
   ]
 }

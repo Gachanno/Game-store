@@ -68,7 +68,7 @@ return (
             >
             {dataHighlights?.map((element:IHighlights) =>(
                 <SwiperSlide key={element.idGame} className='swiper-slide--custom'>
-                <img src={element.urlImage.replace('@', 'public')} alt={element.nameGame} className='highlight__img'/>
+                <img src={element.urlImage.replace('@', '')} alt={element.nameGame} className='highlight__img'/>
                 <div className='highlight__wrapper'>
                     <Link to='/' className='highlight__buy'>
                         Купить

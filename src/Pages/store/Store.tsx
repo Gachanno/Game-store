@@ -1,7 +1,6 @@
 import 'swiper/css';
 import 'swiper/css/pagination';
 import c from './style.module.scss'
-import './style.scss'
 import SliderHighlights from '@/src/Entities/sliders/sliderHighlights';
 
 
@@ -15,8 +14,7 @@ const Store = () => {
         <SliderHighlights/>
       </div>
       <div className={c['main__element-wrapper']}>
-        <h1>Основые предложения</h1>
-
+        <h1>Игры по скидке</h1>    
       </div>
     </main>
   )
