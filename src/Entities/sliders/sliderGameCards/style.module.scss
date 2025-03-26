@@ -1,0 +1,72 @@
+@use '@/src/Shared/style/media' as m;
+
+
+.swiper__layout{
+    max-width: 90rem;
+}
+
+.swiper{
+    padding-top: 1.7rem;
+    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: visible;
+
+    &__card-wrapper{
+        display: block;
+        position: relative;
+        border-radius: 0.625rem;
+        // max-width: fit-content;
+        // overflow: hidden;
+        background-color: #202135;
+        transform: translateY(0);
+        transition: transform 0.5s, background-color 0.5s;
+
+        &:hover{
+            transform: translateY(-0.625rem);
+            background-color: #2A2C3E;
+        }
+    }
+
+    &__sale-value{
+        position: absolute;
+        top: -1rem;
+        right: -.375rem;
+        padding: 0.625rem 0.938rem;
+        border-radius: 0.375rem;
+        background-color: #028CEF;
+        color: #DEE8E9;
+    }
+
+    &__text-wrapper{
+        display: flex;
+        flex-direction: column;
+        padding: 0.75rem 0.625rem;
+    }
+
+    &__game{
+        &-name{
+            margin-bottom: 0.313rem;
+            color: #fff;
+        }
+        &-edition{
+            color: #8E909A;
+        }
+    }
+
+    &__old-price{
+        align-self: flex-end;
+        color: #454754;
+    }
+
+    &__new-price{
+        align-self: flex-end;
+        color: #118BD4;
+        font-size: 1.5rem;
+    }
+}
+
+.swiper__img{
+    width: 18.813rem;
+    height: 25rem;
+    border-radius: 0.625rem 0.625rem 0 0;
+}

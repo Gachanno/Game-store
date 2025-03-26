@@ -20,6 +20,7 @@ class HighlightsService {
         data.whitelist = !data.whitelist
         await axios.patch(`${this.URL}/${id}`, data)
     }
+    
 }
 
 export const highlightsService = new HighlightsService()
