@@ -3,7 +3,7 @@ import { IHighlights } from "../types/types"
 
 class HighlightsService {
 
-    private URL = 'http://localhost:3000/highlights'
+    private URL = 'https://fourth-witty-tangelo.glitch.me/highlights'
 
     async getHighlights(){
         const { data } = await axios.get<IHighlights[]>(this.URL)
