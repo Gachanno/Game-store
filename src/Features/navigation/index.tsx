@@ -41,10 +41,10 @@ const Navigation = () => {
       </ul>
     </nav>
     <div className={c["right-wrapper"]}>
-      <a href="" className={c.search} title="Поиск"></a>
-      <a href="" className={c.registration}>
+      <Link to="/" className={c.search} title="Поиск"></Link>
+      <Link to="/" className={c.registration}>
         Войти
-      </a>
+      </Link>
     </div>
     </>
   )
