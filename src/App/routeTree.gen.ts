@@ -8,101 +8,193 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as SupportImport } from './routes/support'
-import { Route as AboutUsImport } from './routes/about-us'
-import { Route as IndexImport } from './routes/index'
+import { Route as StoreHiddenHeaderImport } from './routes/_store/_hiddenHeader'
+
+// Create Virtual Routes
+
+const SignUpLazyImport = createFileRoute('/signUp')()
+const SignInLazyImport = createFileRoute('/signIn')()
+const StoreHiddenHeaderIndexLazyImport = createFileRoute(
+  '/_store/_hiddenHeader/',
+)()
+const StoreHiddenHeaderSupportLazyImport = createFileRoute(
+  '/_store/_hiddenHeader/support',
+)()
+const StoreHiddenHeaderAboutUsLazyImport = createFileRoute(
+  '/_store/_hiddenHeader/about-us',
+)()
 
 // Create/Update Routes
 
-const SupportRoute = SupportImport.update({
-  id: '/support',
-  path: '/support',
+const SignUpLazyRoute = SignUpLazyImport.update({
+  id: '/signUp',
+  path: '/signUp',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/signUp.lazy').then((d) => d.Route))
+
+const SignInLazyRoute = SignInLazyImport.update({
+  id: '/signIn',
+  path: '/signIn',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/signIn.lazy').then((d) => d.Route))
+
+const StoreHiddenHeaderRoute = StoreHiddenHeaderImport.update({
+  id: '/_store/_hiddenHeader',
   getParentRoute: () => rootRoute,
 } as any)
 
-const AboutUsRoute = AboutUsImport.update({
-  id: '/about-us',
-  path: '/about-us',
-  getParentRoute: () => rootRoute,
-} as any)
+const StoreHiddenHeaderIndexLazyRoute = StoreHiddenHeaderIndexLazyImport.update(
+  {
+    id: '/',
+    path: '/',
+    getParentRoute: () => StoreHiddenHeaderRoute,
+  } as any,
+).lazy(() =>
+  import('./routes/_store/_hiddenHeader/index.lazy').then((d) => d.Route),
+)
 
-const IndexRoute = IndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRoute,
-} as any)
+const StoreHiddenHeaderSupportLazyRoute =
+  StoreHiddenHeaderSupportLazyImport.update({
+    id: '/support',
+    path: '/support',
+    getParentRoute: () => StoreHiddenHeaderRoute,
+  } as any).lazy(() =>
+    import('./routes/_store/_hiddenHeader/support.lazy').then((d) => d.Route),
+  )
+
+const StoreHiddenHeaderAboutUsLazyRoute =
+  StoreHiddenHeaderAboutUsLazyImport.update({
+    id: '/about-us',
+    path: '/about-us',
+    getParentRoute: () => StoreHiddenHeaderRoute,
+  } as any).lazy(() =>
+    import('./routes/_store/_hiddenHeader/about-us.lazy').then((d) => d.Route),
+  )
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
+    '/signIn': {
+      id: '/signIn'
+      path: '/signIn'
+      fullPath: '/signIn'
+      preLoaderRoute: typeof SignInLazyImport
       parentRoute: typeof rootRoute
     }
-    '/about-us': {
-      id: '/about-us'
+    '/signUp': {
+      id: '/signUp'
+      path: '/signUp'
+      fullPath: '/signUp'
+      preLoaderRoute: typeof SignUpLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/_store/_hiddenHeader': {
+      id: '/_store/_hiddenHeader'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof StoreHiddenHeaderImport
+      parentRoute: typeof rootRoute
+    }
+    '/_store/_hiddenHeader/about-us': {
+      id: '/_store/_hiddenHeader/about-us'
       path: '/about-us'
       fullPath: '/about-us'
-      preLoaderRoute: typeof AboutUsImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof StoreHiddenHeaderAboutUsLazyImport
+      parentRoute: typeof StoreHiddenHeaderImport
     }
-    '/support': {
-      id: '/support'
+    '/_store/_hiddenHeader/support': {
+      id: '/_store/_hiddenHeader/support'
       path: '/support'
       fullPath: '/support'
-      preLoaderRoute: typeof SupportImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof StoreHiddenHeaderSupportLazyImport
+      parentRoute: typeof StoreHiddenHeaderImport
+    }
+    '/_store/_hiddenHeader/': {
+      id: '/_store/_hiddenHeader/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof StoreHiddenHeaderIndexLazyImport
+      parentRoute: typeof StoreHiddenHeaderImport
     }
   }
 }
 
 // Create and export the route tree
 
+interface StoreHiddenHeaderRouteChildren {
+  StoreHiddenHeaderAboutUsLazyRoute: typeof StoreHiddenHeaderAboutUsLazyRoute
+  StoreHiddenHeaderSupportLazyRoute: typeof StoreHiddenHeaderSupportLazyRoute
+  StoreHiddenHeaderIndexLazyRoute: typeof StoreHiddenHeaderIndexLazyRoute
+}
+
+const StoreHiddenHeaderRouteChildren: StoreHiddenHeaderRouteChildren = {
+  StoreHiddenHeaderAboutUsLazyRoute: StoreHiddenHeaderAboutUsLazyRoute,
+  StoreHiddenHeaderSupportLazyRoute: StoreHiddenHeaderSupportLazyRoute,
+  StoreHiddenHeaderIndexLazyRoute: StoreHiddenHeaderIndexLazyRoute,
+}
+
+const StoreHiddenHeaderRouteWithChildren =
+  StoreHiddenHeaderRoute._addFileChildren(StoreHiddenHeaderRouteChildren)
+
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/about-us': typeof AboutUsRoute
-  '/support': typeof SupportRoute
+  '/signIn': typeof SignInLazyRoute
+  '/signUp': typeof SignUpLazyRoute
+  '': typeof StoreHiddenHeaderRouteWithChildren
+  '/about-us': typeof StoreHiddenHeaderAboutUsLazyRoute
+  '/support': typeof StoreHiddenHeaderSupportLazyRoute
+  '/': typeof StoreHiddenHeaderIndexLazyRoute
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/about-us': typeof AboutUsRoute
-  '/support': typeof SupportRoute
+  '/signIn': typeof SignInLazyRoute
+  '/signUp': typeof SignUpLazyRoute
+  '/about-us': typeof StoreHiddenHeaderAboutUsLazyRoute
+  '/support': typeof StoreHiddenHeaderSupportLazyRoute
+  '/': typeof StoreHiddenHeaderIndexLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/about-us': typeof AboutUsRoute
-  '/support': typeof SupportRoute
+  '/signIn': typeof SignInLazyRoute
+  '/signUp': typeof SignUpLazyRoute
+  '/_store/_hiddenHeader': typeof StoreHiddenHeaderRouteWithChildren
+  '/_store/_hiddenHeader/about-us': typeof StoreHiddenHeaderAboutUsLazyRoute
+  '/_store/_hiddenHeader/support': typeof StoreHiddenHeaderSupportLazyRoute
+  '/_store/_hiddenHeader/': typeof StoreHiddenHeaderIndexLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about-us' | '/support'
+  fullPaths: '/signIn' | '/signUp' | '' | '/about-us' | '/support' | '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about-us' | '/support'
-  id: '__root__' | '/' | '/about-us' | '/support'
+  to: '/signIn' | '/signUp' | '/about-us' | '/support' | '/'
+  id:
+    | '__root__'
+    | '/signIn'
+    | '/signUp'
+    | '/_store/_hiddenHeader'
+    | '/_store/_hiddenHeader/about-us'
+    | '/_store/_hiddenHeader/support'
+    | '/_store/_hiddenHeader/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AboutUsRoute: typeof AboutUsRoute
-  SupportRoute: typeof SupportRoute
+  SignInLazyRoute: typeof SignInLazyRoute
+  SignUpLazyRoute: typeof SignUpLazyRoute
+  StoreHiddenHeaderRoute: typeof StoreHiddenHeaderRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AboutUsRoute: AboutUsRoute,
-  SupportRoute: SupportRoute,
+  SignInLazyRoute: SignInLazyRoute,
+  SignUpLazyRoute: SignUpLazyRoute,
+  StoreHiddenHeaderRoute: StoreHiddenHeaderRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -115,19 +207,36 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/",
-        "/about-us",
-        "/support"
+        "/signIn",
+        "/signUp",
+        "/_store/_hiddenHeader"
       ]
     },
-    "/": {
-      "filePath": "index.tsx"
+    "/signIn": {
+      "filePath": "signIn.lazy.tsx"
     },
-    "/about-us": {
-      "filePath": "about-us.tsx"
+    "/signUp": {
+      "filePath": "signUp.lazy.tsx"
     },
-    "/support": {
-      "filePath": "support.tsx"
+    "/_store/_hiddenHeader": {
+      "filePath": "_store/_hiddenHeader.tsx",
+      "children": [
+        "/_store/_hiddenHeader/about-us",
+        "/_store/_hiddenHeader/support",
+        "/_store/_hiddenHeader/"
+      ]
+    },
+    "/_store/_hiddenHeader/about-us": {
+      "filePath": "_store/_hiddenHeader/about-us.lazy.tsx",
+      "parent": "/_store/_hiddenHeader"
+    },
+    "/_store/_hiddenHeader/support": {
+      "filePath": "_store/_hiddenHeader/support.lazy.tsx",
+      "parent": "/_store/_hiddenHeader"
+    },
+    "/_store/_hiddenHeader/": {
+      "filePath": "_store/_hiddenHeader/index.lazy.tsx",
+      "parent": "/_store/_hiddenHeader"
     }
   }
 }

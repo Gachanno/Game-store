@@ -1,3 +1,5 @@
+import React from "react"
+
 export interface IHighlights {
     id:string
     idGame:number
@@ -15,4 +17,10 @@ export interface ISaleGame {
     price: string,
     priceWithoutSale: string,
     saleVale: string
+}
+
+export interface IPropsInput{
+    type: React.HTMLInputTypeAttribute | undefined,
+    value?: string,
+    placeholder?: string
 }

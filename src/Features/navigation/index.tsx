@@ -1,5 +1,5 @@
+import Logo from '@/src/Entities/logo'
 import c from './style.module.scss'
-import logo from './assets/Gamecamo.svg'
 import { Link, useLocation } from '@tanstack/react-router'
 
 
@@ -10,7 +10,7 @@ const Navigation = () => {
   return (
     <>
     <Link to="/" className={c.logo}>
-        <img src={logo} alt="Перейти на главную старницу" />
+        <Logo/>
     </Link>
     <nav>
       <ul className={c.nav__list}>
@@ -42,7 +42,7 @@ const Navigation = () => {
     </nav>
     <div className={c["right-wrapper"]}>
       <Link to="/" className={c.search} title="Поиск"></Link>
-      <Link to="/" className={c.registration}>
+      <Link to="/signUp" className={c.registration}>
         Войти
       </Link>
     </div>

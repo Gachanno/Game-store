@@ -6,6 +6,7 @@ import './styles/App.scss'
 import './styles/index.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
+
 const router = createRouter({ routeTree })
 
 declare module '@tanstack/react-router' {

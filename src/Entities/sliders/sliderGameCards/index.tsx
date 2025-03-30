@@ -27,7 +27,7 @@ return (
                 <SwiperSlide key={element.idGame} className={c['swiper-slide--custom']}>
                     <Link to='/' className={c['swiper__card-wrapper']}>
                         <span className={c['swiper__sale-value']}>-{element.saleVale}%</span>
-                        <img src={element.urlImage.replace('@', '')} alt={element.nameGame} className={c.swiper__img} />
+                        <img src={element.urlImage.replace('@', '')} alt={element.nameGame} className={c.swiper__img} loading="lazy"/>
                         <div className={c['swiper__text-wrapper']}>
                             <span className={c['swiper__game-name']}>{element.nameGame}</span>
                             <span className={c['swiper__game-edition']}>{element.edition}</span>

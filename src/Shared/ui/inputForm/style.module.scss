@@ -1,0 +1,20 @@
+.input{
+    padding: 1rem;
+    border: 0.125rem solid #2c96e9;
+    border-radius: 0.813rem;
+    outline: 0;
+    font-size: 1.25rem;
+    color: white;
+    background-color: transparent;
+
+    &:placeholder{
+        color: #474A52;
+    }
+
+    &[type="submit"]{
+        cursor: pointer;
+        border: 0;
+        background-color: #2c96e9;
+        color: white;
+    }
+}

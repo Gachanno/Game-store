@@ -18,12 +18,14 @@
     "path": "^0.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.55.0",
     "sass": "^1.85.1",
     "sass-migrator": "^2.3.1",
     "swiper": "^11.2.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@tanstack/react-router-devtools": "^1.114.29",
     "@tanstack/router-devtools": "^1.112.17",
     "@tanstack/router-plugin": "^1.112.17",
     "@types/node": "^22.13.10",

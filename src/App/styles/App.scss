@@ -6,9 +6,10 @@
 @use 'global' as *;
 
 #root{
-    padding-top: 1.25rem;
-    padding-inline: 6.25rem;
+    box-sizing: border-box;
+    padding: 1.25rem 6.25rem;
     max-width: 90rem;
+    height: 100vh;
     margin: 0 auto;
 
     @include m.tablet{
