@@ -1,0 +1,3 @@
+Sitemap: https://sweet-kataifi-2d9990.netlify.app/sitemap.xml
+User-agent: *
+Allow: https://sweet-kataifi-2d9990.netlify.app/
